@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 58f27e92c504ed74abfa38ee5309292e
+timeCreated: 1495533104
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - equiptItem: {instanceID: 0}
+  - Axe: {fileID: 1160754140777492, guid: 957d7c672a1ff4e4baac2e822b3f0b7e, type: 2}
+  - Pickaxe: {instanceID: 0}
+  - Sword: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
