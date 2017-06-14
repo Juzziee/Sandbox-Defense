@@ -20,18 +20,17 @@ public class Inventory : MonoBehaviour {
 		database = GetComponent<ItemDatabase> ();
 
 		slotAmount = 16;
-		Debug.Log ("Inv Slots: " + slotAmount);
+
 		invetoryPanel = this.transform.Find ("Inventory Panel").gameObject;
 		slotPanel = invetoryPanel.transform.Find ("Slot Panel").gameObject;
 
-		Debug.Log ("slot Panel: " + slotPanel);
 
 		for (int i = 0; i < slotAmount; i++) {
 			items.Add (new ItemDatabase.Item());
 			slots.Add (Instantiate (inventorySlot));
-			Debug.Log (slots);
-			//slots[i].transform.SetParent(slotPanel.transform);
+			slots[i].transform.SetParent(slotPanel.transform);
 		}
+
 
 		AddItem (0);
 		AddItem (0);
@@ -45,6 +44,8 @@ public class Inventory : MonoBehaviour {
 		AddItem (0);
 		AddItem (0);
 		AddItem (0);
+		AddItem (0);
+		
 		AddItem (1);
 		AddItem (2);
 		AddItem (3);
@@ -58,6 +59,7 @@ public class Inventory : MonoBehaviour {
 					ItemData data = slots [i].transform.GetChild (0).GetComponent<ItemData> ();
 					data.amount++;
 					data.transform.GetChild (0).GetComponent<Text> ().text = data.amount.ToString ();
+					//Debug.Log ("Item Name: " + itemToAdd.Title + " | data amount: " + data.amount);
 					break;
 				}
 			}
@@ -79,10 +81,35 @@ public class Inventory : MonoBehaviour {
 	bool itemExists(ItemDatabase.Item item){
 		for (int i = 0; i < items.Count; i++) {
 			if (items [i].ID == item.ID) {
-				return true;
+				ItemData data = slots [i].transform.GetChild (0).GetComponent<ItemData> ();
+				if (data.amount >= item.stackSize) {
+					//Increment I count
+				} else {
+					return true;
+				}
 			}
 		}
 		return false;
+	}
+
+	void Update(){
+
+		if (Input.GetButtonDown ("Inventory")) {
+			ToggleInventory ();
+		}
+	}
+
+	void ToggleInventory(){
+		
+		if(invetoryPanel.GetComponent<Canvas>().enabled == true){
+			// turn off inv
+			invetoryPanel.GetComponent<Canvas>().enabled = false;
+
+		} else {
+			// turn on inv
+			invetoryPanel.GetComponent<Canvas> ().enabled = true;
+		}
+
 	}
 	
 }

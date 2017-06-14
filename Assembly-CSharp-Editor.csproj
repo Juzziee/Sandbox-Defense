@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{31C17968-4841-FAAE-A589-7F1D49FBA8F5}</ProjectGuid>
+    <ProjectGuid>{24DE0BF4-F8D1-F757-E71D-E5E90E60A6C5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -203,14 +203,14 @@
  <HintPath>E:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>F:/Unity/Sandbox Defence/Assets/Plugins/LitJson.dll</HintPath>
+ <HintPath>F:/Unity/Sandbox/Assets/Plugins/LitJson.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{331D88C5-5D7A-8691-FCCA-C4CC8316B435}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{9904ED4F-B9DD-EA76-500C-14736E4FDA50}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{30FAFFDD-AA76-2C02-00AE-D00FD6FBC3F9}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{794C352D-AE29-CD68-340F-08D5C4129C5C}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
