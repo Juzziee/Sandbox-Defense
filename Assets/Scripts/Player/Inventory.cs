@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 
 public class Inventory : MonoBehaviour {
@@ -11,6 +12,10 @@ public class Inventory : MonoBehaviour {
 	GameObject slotPanel;
 	public GameObject inventorySlot;
 	public GameObject inventoryItem;
+	public GameObject player;
+
+	public FirstPersonController fpController;
+
 
 	int slotAmount;
 	public List<ItemDatabase.Item> items = new List<ItemDatabase.Item> ();
@@ -19,10 +24,14 @@ public class Inventory : MonoBehaviour {
 	void Start(){
 		database = GetComponent<ItemDatabase> ();
 
+		fpController.m_MouseLook.SetCursorLock (true);
+		fpController.m_MouseLook.SetRotLock (false);
+
 		slotAmount = 16;
 
 		invetoryPanel = this.transform.Find ("Inventory Panel").gameObject;
 		slotPanel = invetoryPanel.transform.Find ("Slot Panel").gameObject;
+		fpController = this.GetComponent<FirstPersonController> ();
 
 
 		for (int i = 0; i < slotAmount; i++) {
@@ -30,25 +39,7 @@ public class Inventory : MonoBehaviour {
 			slots.Add (Instantiate (inventorySlot));
 			slots[i].transform.SetParent(slotPanel.transform);
 		}
-
-
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
-		
-		AddItem (1);
-		AddItem (2);
-		AddItem (3);
+		invetoryPanel.GetComponent<Canvas> ().enabled = true;
 	}
 
 	public void AddItem(int id){
@@ -71,7 +62,9 @@ public class Inventory : MonoBehaviour {
 					GameObject itemObj = Instantiate (inventoryItem);
 					itemObj.transform.SetParent (slots [i].transform);
 					itemObj.GetComponent<Image> ().sprite = itemToAdd.Sprite;
-					itemObj.transform.position = Vector2.zero;
+					itemObj.transform.localPosition = Vector2.zero;
+					Debug.Log ("Should be zero'd");
+
 					break;
 				}
 			}
@@ -93,20 +86,29 @@ public class Inventory : MonoBehaviour {
 	}
 
 	void Update(){
-
 		if (Input.GetButtonDown ("Inventory")) {
 			ToggleInventory ();
 		}
+
+		if (Input.GetKeyDown (KeyCode.T)) {
+			AddItem (0);
+			AddItem (2);
+			AddItem (1);
+		}
+			
 	}
 
 	void ToggleInventory(){
-		
 		if(invetoryPanel.GetComponent<Canvas>().enabled == true){
 			// turn off inv
+			fpController.m_MouseLook.SetCursorLock (true);
+			fpController.m_MouseLook.SetRotLock (false);
 			invetoryPanel.GetComponent<Canvas>().enabled = false;
 
 		} else {
 			// turn on inv
+			fpController.m_MouseLook.SetCursorLock (false);
+			fpController.m_MouseLook.SetRotLock (true);
 			invetoryPanel.GetComponent<Canvas> ().enabled = true;
 		}
 

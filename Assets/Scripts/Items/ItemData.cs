@@ -11,6 +11,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	public void OnBeginDrag(PointerEventData eventData){
 
 		if (item != null) {
+			Debug.Log (item.Title);
 			this.transform.position = eventData.position;
 		}
 	}
