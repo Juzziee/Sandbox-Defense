@@ -8,6 +8,7 @@ public class Trees : NetworkBehaviour {
 	private int treeHealth = 5;
 	public Rigidbody treeBody;
 
+
 	void Damage(){
 		treeHealth -= 1;
 		if(treeHealth <= 0){

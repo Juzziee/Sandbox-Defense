@@ -19,7 +19,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler {
 			inv.items [droppedItem.slot] = new ItemDatabase.Item ();
 			inv.items [id] = droppedItem.item;
 			droppedItem.slot = id;
-		} else {
+		} else if(droppedItem.slot != id) {
 			Transform item = this.transform.GetChild (0);
 			item.GetComponent<ItemData> ().slot = droppedItem.slot;
 			item.transform.SetParent (inv.slots [droppedItem.slot].transform);

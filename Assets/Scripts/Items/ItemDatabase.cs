@@ -42,7 +42,7 @@ public class ItemDatabase : MonoBehaviour {
 	public class Item {
 		public int ID { get; set; }
 		public string Title { get; set; }
-		public string Decription { get; set; }
+		public string Description { get; set; }
 		public bool Equipable { get; set; }
 		public bool Stackable { get; set; }
 		public int stackSize { get; set; }
@@ -55,7 +55,7 @@ public class ItemDatabase : MonoBehaviour {
 		public Item (int id, string title, string description, bool equipable, bool stackable, int stacksize, int damage, float speed, float durablity, string slug){
 			this.ID = id;
 			this.Title = title;
-			this.Decription = description;
+			this.Description = description;
 			this.Equipable = equipable;
 			this.Stackable = stackable;
 			this.stackSize = stacksize;

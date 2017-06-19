@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour {
 			slots [i].GetComponent<ItemSlot> ().id = i;
 			slots[i].transform.SetParent(slotPanel.transform);
 		}
-		invetoryPanel.GetComponent<Canvas> ().enabled = true;
+		invetoryPanel.GetComponent<Canvas> ().enabled = false;
 	}
 
 	public void AddItem(int id){
@@ -96,6 +96,7 @@ public class Inventory : MonoBehaviour {
 			AddItem (0);
 			AddItem (2);
 			AddItem (1);
+			AddItem (4);
 		}
 			
 	}

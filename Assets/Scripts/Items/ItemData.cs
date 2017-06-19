@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler {
 
 	public ItemDatabase.Item item;
+	public Tooltip tooltip;
 	public int amount;
 	public int slot;
 
@@ -14,6 +15,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
 	void Start(){
 		inv = transform.root.GetComponent<Inventory> ();
+		tooltip = transform.root.GetComponent<Tooltip> ();
 	}
 
 	public void OnBeginDrag(PointerEventData eventData){
@@ -44,12 +46,11 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	}
 
 	public void OnPointerEnter(PointerEventData eventData){
-		Debug.Log ("Mouse enter");
+		tooltip.Activate (item.ID);
 	}
 
 	public void OnPointerExit(PointerEventData eventData){
-		//tooltip.Deactivate (item);
-		Debug.Log("Mouse Exit");
+		tooltip.Deactivate ();
 	}
 
 }

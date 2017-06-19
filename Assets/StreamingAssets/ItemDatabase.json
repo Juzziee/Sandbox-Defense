@@ -15,7 +15,7 @@
 	},
 	{
 		"id": 1,
-		"title": "stick",
+		"title": "Stick",
 		"description": "A small tree branch",
 		"equipable": true,
 		"stackable": true,
@@ -54,5 +54,19 @@
 			"durablity": 20
 		},
 		"slug": "pickaxe"
+	},
+	{
+		"id": 4,
+		"title": "The Endless test",
+		"description": "This is the test that goes on and on my friend, its the test that never ends. When we get to the end we begin again..",
+		"equipable": false,
+		"stackable": true,
+		"stacksize": 10,
+		"stats": {
+			"damage": 5,
+			"speed": 2,
+			"durablity": 20
+		},
+		"slug": "test"
 	}
 ]

@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Items\ItemData.cs" />
      <Compile Include="Assets\Scripts\Items\ItemDatabase.cs" />
      <Compile Include="Assets\Scripts\Items\ItemSlot.cs" />
+     <Compile Include="Assets\Scripts\Items\Tooltip.cs" />
      <Compile Include="Assets\Scripts\Player\Equip_Item.cs" />
      <Compile Include="Assets\Scripts\Player\Inventory.cs" />
      <Compile Include="Assets\Scripts\Player\Network_Player.cs" />
