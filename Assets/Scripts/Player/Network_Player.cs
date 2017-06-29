@@ -8,13 +8,11 @@ public class Network_Player : NetworkBehaviour {
 	public AudioListener audioListener;
 	public GameObject playerBody;
 	public Inventory Inventory;
-	public ItemDatabase itemDatabase;
 
 
 	public override void OnStartLocalPlayer(){
 		fpsController.enabled = true;
 		Inventory.enabled = true;
-		itemDatabase.enabled = true;
 		fpsCamera.enabled = true;
 		audioListener.enabled = true;
 		playerBody.SetActive (false);

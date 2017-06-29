@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 
-public class ItemSlot : MonoBehaviour, IDropHandler {
+public class ItemSlot : NetworkBehaviour, IDropHandler {
 
 	public int id;
 	private Inventory inv;
@@ -12,6 +13,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler {
 		inv = transform.root.GetComponent<Inventory> ();
 	}
 	public void OnDrop(PointerEventData eventData){
+		Debug.Log (eventData.pointerDrag.gameObject.name);
 		ItemData droppedItem = eventData.pointerDrag.GetComponent<ItemData> ();
 		if (inv.items [id].ID == -1) {
 			droppedItem.transform.SetParent (this.transform);

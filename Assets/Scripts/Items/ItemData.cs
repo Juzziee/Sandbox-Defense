@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 
-public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler {
+public class ItemData : NetworkBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler {
 
 	public ItemDatabase.Item item;
 	public Tooltip tooltip;
@@ -19,11 +20,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	}
 
 	public void OnBeginDrag(PointerEventData eventData){
-
-		Debug.Log ("Drag Begin");
-
 		if (item != null) {
-			Debug.Log ("hit");
 			this.transform.SetParent (this.transform.parent.parent);
 			this.transform.position = eventData.position;
 			GetComponent<CanvasGroup> ().blocksRaycasts = false;
@@ -39,10 +36,11 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	}
 
 	public void OnEndDrag(PointerEventData eventData){
-		
+
 		this.transform.SetParent (inv.slots[slot].transform);
 		this.transform.position = inv.slots[slot].transform.position;
 		this.GetComponent<CanvasGroup> ().blocksRaycasts = true;
+
 	}
 
 	public void OnPointerEnter(PointerEventData eventData){

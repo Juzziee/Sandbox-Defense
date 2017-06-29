@@ -3,44 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.Networking;
 
 
-public class Inventory : MonoBehaviour {
+public class Inventory : NetworkBehaviour {
 
 	ItemDatabase database;
 	GameObject invetoryPanel;
 	GameObject slotPanel;
 	public GameObject inventorySlot;
 	public GameObject inventoryItem;
-	public GameObject player;
 
-	public FirstPersonController fpController;
+	public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fpController;
 
+	int invAmount;
+	int actionAmount;
 
-	int slotAmount;
 	public List<ItemDatabase.Item> items = new List<ItemDatabase.Item> ();
 	public List<GameObject> slots = new List<GameObject>();
+
+	GameObject actionPanel;
+	GameObject skillPanel;
+	public GameObject actionSlot;
+	public GameObject actionItem;
+
+	public List<GameObject> actionSlots = new List<GameObject>();
+	public List<GameObject> actionbar = new List<GameObject>();
 
 	void Start(){
 		database = GetComponent<ItemDatabase> ();
 
 		fpController.m_MouseLook.SetCursorLock (true);
-		fpController.m_MouseLook.SetRotLock (false);
 
-		slotAmount = 16;
+
+		// Inventory slots
+		invAmount = 16;
+		actionAmount = 7;
 
 		invetoryPanel = this.transform.Find ("Inventory Panel").gameObject;
 		slotPanel = invetoryPanel.transform.Find ("Slot Panel").gameObject;
-		fpController = this.GetComponent<FirstPersonController> ();
 
 
-		for (int i = 0; i < slotAmount; i++) {
+		for (int i = 0; i < invAmount; i++) {
 			items.Add (new ItemDatabase.Item());
 			slots.Add (Instantiate (inventorySlot));
+			slots [i].gameObject.name = "InvSlot " + i;
 			slots [i].GetComponent<ItemSlot> ().id = i;
 			slots[i].transform.SetParent(slotPanel.transform);
 		}
 		invetoryPanel.GetComponent<Canvas> ().enabled = false;
+
+		// Action Bar
+		actionPanel = this.transform.Find ("Action Bar").gameObject;
+		skillPanel = actionPanel.transform.Find ("Action Slot").gameObject;
+
+		for (int i = 0; i < actionAmount; i++) {
+			actionbar.Add (Instantiate (actionSlot));
+			actionbar [i].gameObject.name = "Actionbar " + i;
+			actionbar [i].GetComponent<ActionSlot> ().id = i;
+			actionbar [i].transform.SetParent(skillPanel.transform);
+		}
 	}
 
 	public void AddItem(int id){
@@ -105,13 +127,13 @@ public class Inventory : MonoBehaviour {
 		if(invetoryPanel.GetComponent<Canvas>().enabled == true){
 			// turn off inv
 			fpController.m_MouseLook.SetCursorLock (true);
-			fpController.m_MouseLook.SetRotLock (false);
+			fpController.SetCameraLock (false);
 			invetoryPanel.GetComponent<Canvas>().enabled = false;
 
 		} else {
 			// turn on inv
 			fpController.m_MouseLook.SetCursorLock (false);
-			fpController.m_MouseLook.SetRotLock (true);
+			fpController.SetCameraLock (true);
 			invetoryPanel.GetComponent<Canvas> ().enabled = true;
 		}
 

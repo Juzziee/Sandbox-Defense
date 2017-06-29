@@ -41,6 +41,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+		private bool lockCamera;
 
         // Use this for initialization
         private void Start()
@@ -90,6 +91,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource.Play();
             m_NextStep = m_StepCycle + .5f;
         }
+
+		public void SetCameraLock(bool value){
+			lockCamera = value;
+		}
 
 
         private void FixedUpdate()
@@ -236,8 +241,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
-        }
+			if(!lockCamera){
+         	   m_MouseLook.LookRotation (transform, m_Camera.transform);
+			}
+		}
 
 
         private void OnControllerColliderHit(ControllerColliderHit hit)

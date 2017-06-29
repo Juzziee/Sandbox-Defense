@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class Tooltip : MonoBehaviour {
+public class Tooltip : NetworkBehaviour {
 
 	public ItemDatabase database;
 	public GameObject tooltip;
