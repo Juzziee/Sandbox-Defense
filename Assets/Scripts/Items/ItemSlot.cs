@@ -13,7 +13,7 @@ public class ItemSlot : NetworkBehaviour, IDropHandler {
 		inv = transform.root.GetComponent<Inventory> ();
 	}
 	public void OnDrop(PointerEventData eventData){
-		Debug.Log (eventData.pointerDrag.gameObject.name);
+		Debug.Log ("Doing ItemSlot ondrop");
 		ItemData droppedItem = eventData.pointerDrag.GetComponent<ItemData> ();
 		if (inv.items [id].ID == -1) {
 			droppedItem.transform.SetParent (this.transform);

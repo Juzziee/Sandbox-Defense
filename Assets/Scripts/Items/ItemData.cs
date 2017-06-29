@@ -36,7 +36,7 @@ public class ItemData : NetworkBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	}
 
 	public void OnEndDrag(PointerEventData eventData){
-
+		Debug.Log (this.transform.parent);
 		this.transform.SetParent (inv.slots[slot].transform);
 		this.transform.position = inv.slots[slot].transform.position;
 		this.GetComponent<CanvasGroup> ().blocksRaycasts = true;
